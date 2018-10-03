@@ -1,0 +1,38 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  wf-director:
+    lang: node
+    handler: ./wf-director
+    image: alexellis2/wf-director:latest
+    environment:
+      gateway_url: http://gateway:8080/function/
+      combine_output: false
+      write_debug: true
+
+  task-1:
+    lang: node
+    handler: ./task-1
+    image: alexellis2/task-1:latest
+    environment:
+      content_type: application/json
+      combine_output: false
+      write_debug: true
+  task-2:
+    lang: node
+    handler: ./task-2
+    image: alexellis2/task-2:latest
+    environment:
+      content_type: application/json
+      combine_output: false
+      write_debug: true
+  task-3:
+    lang: node
+    handler: ./task-3
+    image: alexellis2/task-3:latest
+    environment:
+      content_type: application/json
+      combine_output: false
+      write_debug: true
